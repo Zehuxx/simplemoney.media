@@ -151,11 +151,11 @@
 
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Inicio">
+    <a class="brand" href="#top" aria-label="Inicio" data-i18n-aria="a_home">
       <svg viewBox="0 0 600 600" aria-hidden="true"><rect width="600" height="600" rx="120" fill="#143A6B"/><rect x="117" y="329" width="86" height="100" rx="22" fill="#fff"/><rect x="226" y="261" width="86" height="168" rx="22" fill="#fff"/><rect x="335" y="193" width="86" height="236" rx="22" fill="#fff"/><path d="M138 312 L416 150 M328 150 H416 V236" fill="none" stroke="#4EA1FF" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span data-i18n="brand">Dinero Simple</span>
     </a>
-    <nav class="nav-links" aria-label="Secciones">
+    <nav class="nav-links" aria-label="Secciones" data-i18n-aria="a_sections">
       <a href="#ver" data-i18n="nav_watch">Dónde ver</a>
       <a href="#temas" data-i18n="nav_topics">Temas</a>
       <a href="#como" data-i18n="nav_how">Cómo lo hacemos</a>
@@ -195,7 +195,7 @@
         </p>
       </div>
       <div class="phone-wrap">
-        <div class="phone" aria-label="Vista previa de los videos">
+        <div class="phone" aria-label="Vista previa de los videos" data-i18n-aria="a_preview">
           <div class="wm">simplemoney.media</div>
           <div class="cards" id="cards"></div>
           <div class="dots" id="dots" aria-hidden="true"></div>
@@ -307,6 +307,7 @@ const T = {
     watch_h2: "Dónde ver Dinero Simple", watch_sub: "El mismo contenido en las dos plataformas.",
     yt_what: "El canal en español.", fb_what: "La página en español.", open: "Abrir",
     pil_h2: "De qué hablamos", pil_sub: "De todo lo que tenga que ver con el dinero y se pueda explicar con números y ejemplos reales. Estos son algunos de los temas:",
+    pil_more: "Y lo que pidan en los comentarios: si se puede explicar con números, cabe aquí.",
     p1_h: "Ahorro y presupuesto", p1_p: "Cómo organizar el sueldo, apartar dinero y que alcance hasta fin de mes.",
     p2_h: "Deudas y crédito", p2_p: "Tarjetas, préstamos, cuotas y cómo salir de deudas sin pagar de más.",
     p3_h: "Inversión", p3_p: "Acciones, fondos, bonos y lo que conviene mirar antes de poner un centavo.",
@@ -325,6 +326,7 @@ const T = {
     disc: "Contenido de información general y educativa; no constituye asesoría financiera personalizada.",
     who: "Simple Money Media produce Dinero Simple (español) y Simple Money (inglés).",
     contact: "Contacto:", th_dark: "Activar modo oscuro", th_light: "Activar modo claro",
+    a_home: "Inicio", a_sections: "Secciones", a_preview: "Vista previa de los videos",
     cards: [
       { big: "Ahorras al revés", sub: "y por eso nunca sobra" },
       { big: "1.000 → 0", sub: "cada mes igual" },
@@ -349,6 +351,7 @@ const T = {
     watch_h2: "Where to watch Simple Money", watch_sub: "The same content on both platforms.",
     yt_what: "The channel in English.", fb_what: "The page in English.", open: "Open",
     pil_h2: "What we talk about", pil_sub: "Anything to do with money that can be explained with numbers and real examples. These are some of the topics:",
+    pil_more: "And whatever people ask for in the comments: if it can be explained with numbers, it fits here.",
     p1_h: "Saving and budgeting", p1_p: "How to organize your paycheck, set money aside and make it last the month.",
     p2_h: "Debt and credit", p2_p: "Cards, loans, installments and how to get out of debt without overpaying.",
     p3_h: "Investing", p3_p: "Stocks, funds, bonds and what to check before you put in a cent.",
@@ -367,6 +370,7 @@ const T = {
     disc: "General informational and educational content; it does not constitute personalized financial advice.",
     who: "Simple Money Media produces Dinero Simple (Spanish) and Simple Money (English).",
     contact: "Contact:", th_dark: "Switch to dark mode", th_light: "Switch to light mode",
+    a_home: "Home", a_sections: "Sections", a_preview: "Video preview",
     cards: [
       { big: "You save backwards", sub: "and that's why nothing's left" },
       { big: "1,000 → 0", sub: "every single month" },
@@ -399,6 +403,7 @@ function setLang(next){
   document.title = t.title;
   $('meta[name="description"]').setAttribute("content", t.desc);
   $$("[data-i18n]").forEach(el => { const k = el.dataset.i18n; if (t[k] != null) el.textContent = t[k]; });
+  $$("[data-i18n-aria]").forEach(el => { const k = el.dataset.i18nAria; if (t[k] != null) el.setAttribute("aria-label", t[k]); });
   $$(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
   $("[data-switch]").dataset.switch = lang === "es" ? "en" : "es";
 

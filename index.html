@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dinero Simple · El dinero, explicado simple</title>
+<meta name="description" content="El dinero explicado con números reales y ejemplos de la vida diaria. Ahorro, inversión, deudas y noticias del mercado, en español e inglés.">
+<link rel="canonical" href="https://simplemoney.media/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Simple Money Media · Dinero Simple / Simple Money">
+<meta property="og:description" content="El dinero, explicado simple. Money, made simple.">
+<meta property="og:url" content="https://simplemoney.media/">
+<meta property="og:image" content="https://simplemoney.media/og-image.jpg">
+<meta name="theme-color" content="#143A6B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect width='600' height='600' rx='120' fill='%23143A6B'/%3E%3Crect x='117' y='329' width='86' height='100' rx='22' fill='%23fff'/%3E%3Crect x='226' y='261' width='86' height='168' rx='22' fill='%23fff'/%3E%3Crect x='335' y='193' width='86' height='236' rx='22' fill='%23fff'/%3E%3Cpath d='M138 312 L416 150 M328 150 H416 V236' fill='none' stroke='%234EA1FF' stroke-width='44' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script>
+  (function(){ var t=null; try{ t=localStorage.getItem("sm_theme"); }catch(e){}
+    if(t!=="dark"&&t!=="light"){ t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light"; }
+    document.documentElement.setAttribute("data-theme",t); })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#143A6B; --navy-deep:#0A2446; --sky:#4EA1FF; --ink:#0F1C2E; --paper:#F3F6FB; --white:#FFFFFF;
+    --amber:#F5B941; --amber-ink:#2A1E00; --mint:#7FD3B0; --muted:#55657A; --line:#D7DFEA;
+    --surface:#FFFFFF; --link:#143A6B; --band:#0A2446; --nav-bg:rgba(243,246,251,.88);
+    --seg-on-bg:#143A6B; --seg-on-ink:#FFFFFF; --ghost-hover:#E6EDF7;
+    --font:"Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --radius:14px; --max:1100px;
+    color-scheme:light;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  :root[data-theme="dark"]{
+    --paper:#0B1526; --ink:#EEF3FA; --muted:#A9B7CB; --line:#1F3150;
+    --surface:#10203A; --link:#7FBCFF; --band:#071B38; --nav-bg:rgba(11,21,38,.86);
+    --seg-on-bg:#4EA1FF; --seg-on-ink:#0B1526; --ghost-hover:rgba(78,161,255,.14);
+    color-scheme:dark;
+  }
+  *,*::before,*::after{box-sizing:inherit}
+  html{scroll-behavior:smooth; scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
+  body{margin:0; font-family:var(--font); font-size:17px; line-height:1.6; color:var(--ink); background:var(--paper); -webkit-font-smoothing:antialiased}
+  img,svg{max-width:100%; display:block}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--amber); outline-offset:3px; border-radius:6px}
+  .wrap{width:min(var(--max), calc(100% - 2.5rem)); margin-inline:auto}
+
+  /* Nav */
+  .nav{position:sticky; top:env(safe-area-inset-top,0px); z-index:20; background:var(--nav-bg); backdrop-filter:saturate(1.4) blur(10px); border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex; align-items:center; justify-content:space-between; gap:1rem; min-height:68px}
+  .brand{display:flex; align-items:center; gap:.65rem; text-decoration:none; font-weight:800; font-size:1.15rem; letter-spacing:-.01em}
+  .brand svg{width:36px; height:36px; border-radius:9px}
+  .nav-links{display:flex; gap:1.6rem; font-size:.95rem}
+  .nav-links a{text-decoration:none; color:var(--muted)}
+  .nav-links a:hover{color:var(--ink)}
+  .controls{display:flex; align-items:center; gap:.6rem}
+  .lang{display:inline-flex; border:1px solid var(--line); border-radius:999px; padding:3px; background:var(--surface)}
+  .lang button{appearance:none; border:0; background:transparent; font:inherit; font-weight:700; font-size:.85rem; padding:.3rem .8rem; border-radius:999px; color:var(--muted); cursor:pointer}
+  .lang button[aria-pressed="true"]{background:var(--seg-on-bg); color:var(--seg-on-ink)}
+  .theme{appearance:none; width:40px; height:40px; border-radius:50%; border:1px solid var(--line); background:var(--surface); color:var(--ink); display:inline-grid; place-items:center; cursor:pointer}
+  .theme svg{width:18px; height:18px}
+  .theme .moon{display:none}
+  :root[data-theme="dark"] .theme .sun{display:none}
+  :root[data-theme="dark"] .theme .moon{display:block}
+  @media (max-width:760px){ .nav-links{display:none} }
+
+  /* Hero */
+  .hero{padding:clamp(3rem,7vw,6rem) 0 clamp(2.5rem,5vw,4rem)}
+  .hero .wrap{display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(2rem,5vw,4rem); align-items:center}
+  h1{font-size:clamp(2.5rem,5.6vw,4.4rem); line-height:1.02; letter-spacing:-.03em; font-weight:800; margin:0 0 1.1rem; max-width:12ch}
+  .lede{font-size:clamp(1.05rem,1.6vw,1.25rem); color:var(--muted); max-width:46ch; margin:0 0 1.8rem}
+  .ctas{display:flex; flex-wrap:wrap; gap:.8rem; margin-bottom:1.2rem}
+  .btn{display:inline-flex; align-items:center; gap:.55rem; text-decoration:none; font-weight:700; font-size:1rem; padding:.85rem 1.25rem; border-radius:999px; border:2px solid transparent; transition:transform .12s ease}
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:var(--amber); color:var(--amber-ink)}
+  .btn-primary:hover{background:#F8C65E}
+  .btn-ghost{border-color:var(--link); color:var(--link); background:transparent}
+  .btn-ghost:hover{background:var(--ghost-hover)}
+  .btn svg{width:20px; height:20px}
+  .hero-note{font-size:.92rem; color:var(--muted); margin:0}
+  .hero-note button{appearance:none; border:0; background:none; font:inherit; color:var(--link); font-weight:700; text-decoration:underline; text-underline-offset:3px; cursor:pointer; padding:0}
+
+  /* Phone preview: the site speaks the videos' own visual language */
+  .phone-wrap{display:flex; justify-content:center}
+  .phone{width:min(290px, 80vw); aspect-ratio:9/16; border-radius:30px; background:var(--navy); position:relative; overflow:hidden; box-shadow:0 30px 60px -30px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.1)}
+  .phone .wm{position:absolute; top:7%; left:0; right:0; text-align:center; font-size:.72rem; font-weight:700; color:rgba(255,255,255,.65)}
+  .cards{position:absolute; inset:0}
+  .card{position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:0 1.4rem; opacity:0; transition:opacity .6s ease}
+  .card.is-on{opacity:1}
+  .card .big{color:var(--white); font-weight:800; font-size:2.05rem; line-height:1.05; letter-spacing:-.02em}
+  .card .big.long{font-size:1.55rem}
+  .card .sub{color:var(--mint); font-weight:700; font-size:1.2rem; margin-top:.4rem}
+  .card .bar{width:52%; height:8px; border-radius:999px; background:var(--amber); margin-top:1.1rem}
+  .phone .dots{position:absolute; bottom:6%; left:0; right:0; display:flex; justify-content:center; gap:6px}
+  .phone .dots i{width:5px; height:5px; border-radius:50%; background:rgba(255,255,255,.3)}
+  .phone .dots i.is-on{background:var(--amber)}
+  @media (max-width:860px){ .hero .wrap{grid-template-columns:1fr} .phone-wrap{order:-1} .phone{width:min(230px,70vw)} h1{max-width:none} }
+
+  /* Sections */
+  section{padding:clamp(2.5rem,6vw,5rem) 0}
+  h2{font-size:clamp(1.65rem,3vw,2.3rem); letter-spacing:-.02em; line-height:1.15; margin:0 0 .5rem; font-weight:800}
+  h3{font-size:1.2rem; font-weight:800; margin:0 0 .35rem}
+  .sub{color:var(--muted); margin:0 0 2rem; max-width:56ch}
+
+  /* Platforms: rows */
+  .rows{border-top:1px solid var(--line)}
+  .row{display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1.6fr) auto; gap:1rem; align-items:center; padding:1.1rem 0; border-bottom:1px solid var(--line)}
+  .row .name{font-weight:800; font-size:1.15rem; display:flex; align-items:center; gap:.6rem}
+  .row .name svg{width:22px; height:22px; flex:none}
+  .row .what{color:var(--muted)}
+  .row .handle{display:block; font-size:.9rem; color:var(--link); font-weight:600; overflow-wrap:anywhere}
+  .row .btn{padding:.6rem 1rem; font-size:.95rem}
+  @media (max-width:640px){ .row{grid-template-columns:1fr auto} .row .what{grid-column:1 / -1; margin-top:-.4rem} }
+
+
+  /* Pillars band */
+  .band{background:var(--band); color:var(--white)}
+  .band h2{color:var(--white)}
+  .band .sub{color:rgba(255,255,255,.72)}
+  .pillars{display:grid; grid-template-columns:repeat(4,1fr); gap:2.4rem 2rem}
+  .pillars p{margin:0; color:rgba(255,255,255,.78)}
+  .pillars h3{padding-top:.8rem; border-top:3px solid var(--amber); display:inline-block}
+  .band .more{margin:2.2rem 0 0; color:rgba(255,255,255,.72); max-width:56ch}
+  @media (max-width:900px){ .pillars{grid-template-columns:1fr 1fr} }
+  @media (max-width:560px){ .pillars{grid-template-columns:1fr; gap:1.4rem} }
+
+  /* How */
+  .how{display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(2rem,5vw,4rem); align-items:start}
+  .how ul{list-style:none; margin:0; padding:0; display:grid; gap:1.1rem}
+  .how li{display:grid; gap:.1rem}
+  .how li b{font-weight:800}
+  .how li span{color:var(--muted)}
+  .aside{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:1.5rem 1.6rem; display:grid; gap:1.2rem}
+  .aside p{margin:0; color:var(--muted)}
+  .aside h3{margin:0 0 .25rem}
+  @media (max-width:860px){ .how{grid-template-columns:1fr} }
+
+  /* Footer */
+  footer{padding:2.5rem 0 3rem; border-top:1px solid var(--line); color:var(--muted); font-size:.92rem}
+  footer .wrap{display:grid; gap:1rem}
+  footer p{margin:0; max-width:70ch}
+  footer a{color:var(--link); text-decoration:none; font-weight:600}
+  footer a:hover{text-decoration:underline}
+  .foot-row{display:flex; flex-wrap:wrap; gap:1rem 2rem; align-items:center; justify-content:space-between}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Inicio">
+      <svg viewBox="0 0 600 600" aria-hidden="true"><rect width="600" height="600" rx="120" fill="#143A6B"/><rect x="117" y="329" width="86" height="100" rx="22" fill="#fff"/><rect x="226" y="261" width="86" height="168" rx="22" fill="#fff"/><rect x="335" y="193" width="86" height="236" rx="22" fill="#fff"/><path d="M138 312 L416 150 M328 150 H416 V236" fill="none" stroke="#4EA1FF" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span data-i18n="brand">Dinero Simple</span>
+    </a>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#ver" data-i18n="nav_watch">Dónde ver</a>
+      <a href="#temas" data-i18n="nav_topics">Temas</a>
+      <a href="#como" data-i18n="nav_how">Cómo lo hacemos</a>
+    </nav>
+    <div class="controls">
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" data-lang="es" aria-pressed="true">ES</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button type="button" class="theme" id="theme" aria-label="Activar modo oscuro">
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.3A8.5 8.5 0 0 1 9.7 3.5a8.5 8.5 0 1 0 10.8 10.8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1 data-i18n="h1">El dinero, explicado simple.</h1>
+        <p class="lede" data-i18n="lede">El dinero explicado con números reales y ejemplos de la vida diaria, para tomar mejores decisiones con lo que ganas. Sin jerga y sin promesas.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" data-link="youtube" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12 31 31 0 0 0 23 7.2ZM9.7 15.1V8.9l6 3.1-6 3.1Z"/></svg>
+            <span data-i18n="cta_yt">Suscríbete en YouTube</span>
+          </a>
+          <a class="btn btn-ghost" data-link="facebook" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 22v-8.2h2.8l.4-3.3h-3.2V8.4c0-.9.3-1.6 1.6-1.6h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.3h2.8V22h3.4Z"/></svg>
+            <span data-i18n="cta_fb">Seguir en Facebook</span>
+          </a>
+        </div>
+        <p class="hero-note">
+          <span data-i18n="note_a">Nuevos videos cada semana. También en inglés:</span>
+          <button type="button" data-switch="en" data-i18n="note_b">Simple Money</button>
+        </p>
+      </div>
+      <div class="phone-wrap">
+        <div class="phone" aria-label="Vista previa de los videos">
+          <div class="wm">simplemoney.media</div>
+          <div class="cards" id="cards"></div>
+          <div class="dots" id="dots" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ver">
+    <div class="wrap">
+      <h2 data-i18n="watch_h2">Dónde ver Dinero Simple</h2>
+      <p class="sub" data-i18n="watch_sub">El mismo contenido en las dos plataformas.</p>
+      <div class="rows">
+        <div class="row" data-platform="youtube">
+          <div class="name"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#FF0000" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12 31 31 0 0 0 23 7.2Z"/><path fill="#fff" d="M9.7 15.1V8.9l6 3.1-6 3.1Z"/></svg>YouTube</div>
+          <div class="what"><span data-i18n="yt_what">El canal en español.</span> <span class="handle" data-handle="youtube"></span></div>
+          <a class="btn btn-ghost" data-link="youtube" href="#" target="_blank" rel="noopener" data-i18n="open">Abrir</a>
+        </div>
+        <div class="row" data-platform="facebook">
+          <div class="name"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#1877F2"/><path fill="#fff" d="M13.3 20v-6.6h2.2l.3-2.6h-2.5V9.2c0-.7.2-1.3 1.3-1.3h1.3V5.6c-.2 0-1-.1-2-.1-2 0-3.3 1.2-3.3 3.4v1.9H8.4v2.6h2.2V20h2.7Z"/></svg>Facebook</div>
+          <div class="what"><span data-i18n="fb_what">La página en español.</span> <span class="handle" data-handle="facebook"></span></div>
+          <a class="btn btn-ghost" data-link="facebook" href="#" target="_blank" rel="noopener" data-i18n="open">Abrir</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="temas" class="band">
+    <div class="wrap">
+      <h2 data-i18n="pil_h2">De qué hablamos</h2>
+      <p class="sub" data-i18n="pil_sub">De todo lo que tenga que ver con el dinero y se pueda explicar con números y ejemplos reales. Estos son algunos de los temas:</p>
+      <div class="pillars">
+        <div><h3 data-i18n="p1_h">Ahorro y presupuesto</h3><p data-i18n="p1_p">Cómo organizar el sueldo, apartar dinero y que alcance hasta fin de mes.</p></div>
+        <div><h3 data-i18n="p2_h">Deudas y crédito</h3><p data-i18n="p2_p">Tarjetas, préstamos, cuotas y cómo salir de deudas sin pagar de más.</p></div>
+        <div><h3 data-i18n="p3_h">Inversión</h3><p data-i18n="p3_p">Acciones, fondos, bonos y lo que conviene mirar antes de poner un centavo.</p></div>
+        <div><h3 data-i18n="p4_h">Economía y mercados</h3><p data-i18n="p4_p">Tasas, inflación, dólar y lo que deciden los bancos centrales, traducido a tu bolsillo.</p></div>
+        <div><h3 data-i18n="p5_h">Ingresos y trabajo</h3><p data-i18n="p5_p">Negociar el sueldo, ingresos extra y qué hacer con un aumento o un bono.</p></div>
+        <div><h3 data-i18n="p6_h">Grandes decisiones</h3><p data-i18n="p6_p">Comprar o alquilar, el carro, la hipoteca, el seguro: las compras que marcan una década.</p></div>
+        <div><h3 data-i18n="p7_h">Historia y casos</h3><p data-i18n="p7_p">Burbujas, crisis, fortunas que se perdieron y qué enseñan hoy.</p></div>
+        <div><h3 data-i18n="p8_h">Hábitos y trampas</h3><p data-i18n="p8_p">Por qué gastamos como gastamos, las trampas del consumo y cómo reconocer una estafa a tiempo.</p></div>
+      </div>
+      <p class="more" data-i18n="pil_more">Y lo que pidan en los comentarios: si se puede explicar con números, cabe aquí.</p>
+    </div>
+  </section>
+
+  <section id="como">
+    <div class="wrap">
+      <h2 data-i18n="how_h2">Cómo lo hacemos</h2>
+      <p class="sub" data-i18n="how_sub">Cinco reglas que se cumplen en todo lo que publicamos.</p>
+      <div class="how">
+        <ul>
+          <li><b data-i18n="d1_b">Directo al punto.</b><span data-i18n="d1_s">Sin intros ni relleno: el primer segundo ya cuenta algo.</span></li>
+          <li><b data-i18n="d2_b">Cifras, no consejos vagos.</b><span data-i18n="d2_s">Cada número tiene fuente, y la fuente va en la descripción.</span></li>
+          <li><b data-i18n="d3_b">Sin jerga.</b><span data-i18n="d3_s">Lenguaje claro y cercano, el que usarías con un amigo.</span></li>
+          <li><b data-i18n="d4_b">Promesas honestas.</b><span data-i18n="d4_s">Nada de hacerte rico rápido ni rendimientos garantizados.</span></li>
+          <li><b data-i18n="d5_b">En dos idiomas.</b><span data-i18n="d5_s">Dinero Simple en español y Simple Money en inglés, cada uno escrito para su audiencia, no traducido a la carrera.</span></li>
+        </ul>
+        <div class="aside">
+          <div>
+            <h3 data-i18n="aud_h">Para quién es</h3>
+            <p data-i18n="aud_p">Para quien siente que trabaja más y le alcanza menos, para quien nunca recibió educación financiera y para quien quiere empezar a ahorrar e invertir sin sentirse abrumado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p data-i18n="disc">Contenido de información general y educativa; no constituye asesoría financiera personalizada.</p>
+    <p data-i18n="who">Simple Money Media produce Dinero Simple (español) y Simple Money (inglés).</p>
+    <div class="foot-row">
+      <p><span data-i18n="contact">Contacto:</span> <a data-link="mail" href="#"></a></p>
+      <p>© <span id="year"></span> Simple Money Media</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   CONFIG — edita solo esta parte
+   ========================================================= */
+const CONFIG = {
+  email: "management@simplemoney.media",   // correo de contacto público
+  es: {
+    youtube:  { url: "https://www.youtube.com/@dinerosimplemedia",  handle: "@dinerosimplemedia" },
+    facebook: { url: "https://www.facebook.com/dinerosimplemedia",  handle: "@dinerosimplemedia" }
+  },
+  en: {
+    youtube:  { url: "https://www.youtube.com/@simplemoneymediahq", handle: "@simplemoneymediahq" },
+    facebook: { url: "https://www.facebook.com/simplemoneymediahq", handle: "@simplemoneymediahq" }
+  }
+};
+
+/* =========================================================
+   Textos
+   ========================================================= */
+const T = {
+  es: {
+    title: "Dinero Simple · El dinero, explicado simple",
+    desc: "El dinero explicado con números reales y ejemplos de la vida diaria. Ahorro, inversión, deudas y noticias del mercado.",
+    brand: "Dinero Simple", nav_watch: "Dónde ver", nav_topics: "Temas", nav_how: "Cómo lo hacemos",
+    h1: "El dinero, explicado simple.",
+    lede: "El dinero explicado con números reales y ejemplos de la vida diaria, para tomar mejores decisiones con lo que ganas. Sin jerga y sin promesas.",
+    cta_yt: "Suscríbete en YouTube", cta_fb: "Seguir en Facebook",
+    note_a: "Nuevos videos cada semana. También en inglés:", note_b: "Simple Money",
+    watch_h2: "Dónde ver Dinero Simple", watch_sub: "El mismo contenido en las dos plataformas.",
+    yt_what: "El canal en español.", fb_what: "La página en español.", open: "Abrir",
+    pil_h2: "De qué hablamos", pil_sub: "De todo lo que tenga que ver con el dinero y se pueda explicar con números y ejemplos reales. Estos son algunos de los temas:",
+    p1_h: "Ahorro y presupuesto", p1_p: "Cómo organizar el sueldo, apartar dinero y que alcance hasta fin de mes.",
+    p2_h: "Deudas y crédito", p2_p: "Tarjetas, préstamos, cuotas y cómo salir de deudas sin pagar de más.",
+    p3_h: "Inversión", p3_p: "Acciones, fondos, bonos y lo que conviene mirar antes de poner un centavo.",
+    p4_h: "Economía y mercados", p4_p: "Tasas, inflación, dólar y lo que deciden los bancos centrales, traducido a tu bolsillo.",
+    p5_h: "Ingresos y trabajo", p5_p: "Negociar el sueldo, ingresos extra y qué hacer con un aumento o un bono.",
+    p6_h: "Grandes decisiones", p6_p: "Comprar o alquilar, el carro, la hipoteca, el seguro: las compras que marcan una década.",
+    p7_h: "Historia y casos", p7_p: "Burbujas, crisis, fortunas que se perdieron y qué enseñan hoy.",
+    p8_h: "Hábitos y trampas", p8_p: "Por qué gastamos como gastamos, las trampas del consumo y cómo reconocer una estafa a tiempo.",
+    how_h2: "Cómo lo hacemos", how_sub: "Cinco reglas que se cumplen en todo lo que publicamos.",
+    d1_b: "Directo al punto.", d1_s: "Sin intros ni relleno: el primer segundo ya cuenta algo.",
+    d2_b: "Cifras, no consejos vagos.", d2_s: "Cada número tiene fuente, y la fuente va en la descripción.",
+    d3_b: "Sin jerga.", d3_s: "Lenguaje claro y cercano, el que usarías con un amigo.",
+    d4_b: "Promesas honestas.", d4_s: "Nada de hacerte rico rápido ni rendimientos garantizados.",
+    d5_b: "En dos idiomas.", d5_s: "Dinero Simple en español y Simple Money en inglés, cada uno escrito para su audiencia, no traducido a la carrera.",
+    aud_h: "Para quién es", aud_p: "Para quien siente que trabaja más y le alcanza menos, para quien nunca recibió educación financiera y para quien quiere empezar a ahorrar e invertir sin sentirse abrumado.",
+    disc: "Contenido de información general y educativa; no constituye asesoría financiera personalizada.",
+    who: "Simple Money Media produce Dinero Simple (español) y Simple Money (inglés).",
+    contact: "Contacto:", th_dark: "Activar modo oscuro", th_light: "Activar modo claro",
+    cards: [
+      { big: "Ahorras al revés", sub: "y por eso nunca sobra" },
+      { big: "1.000 → 0", sub: "cada mes igual" },
+      { big: "0 % de interés", sub: "no es gratis" },
+      { big: "Pagaste 600", sub: "y sigues debiendo 850" },
+      { big: "La Fed subió tasas", sub: "qué cambia para ti" },
+      { big: "Precios +5 %, sueldo +3 %", sub: "perdiste 2 %" },
+      { big: "72 ÷ 8 = 9 años", sub: "para duplicar tu dinero" },
+      { big: "1 bulbo = 1 casa", sub: "Holanda, 1637" },
+      { big: "¿Comprar o alquilar?", sub: "la cuenta completa" },
+      { big: "Primero tú.", sub: "Después todo lo demás." }
+    ]
+  },
+  en: {
+    title: "Simple Money · Money, made simple",
+    desc: "Money explained with real numbers and everyday examples. Saving, investing, debt and market news.",
+    brand: "Simple Money", nav_watch: "Where to watch", nav_topics: "Topics", nav_how: "How we do it",
+    h1: "Money, made simple.",
+    lede: "Money explained with real numbers and everyday examples, so you can make better decisions with what you earn. No jargon, no hype.",
+    cta_yt: "Subscribe on YouTube", cta_fb: "Follow on Facebook",
+    note_a: "New videos every week. Also in Spanish:", note_b: "Dinero Simple",
+    watch_h2: "Where to watch Simple Money", watch_sub: "The same content on both platforms.",
+    yt_what: "The channel in English.", fb_what: "The page in English.", open: "Open",
+    pil_h2: "What we talk about", pil_sub: "Anything to do with money that can be explained with numbers and real examples. These are some of the topics:",
+    p1_h: "Saving and budgeting", p1_p: "How to organize your paycheck, set money aside and make it last the month.",
+    p2_h: "Debt and credit", p2_p: "Cards, loans, installments and how to get out of debt without overpaying.",
+    p3_h: "Investing", p3_p: "Stocks, funds, bonds and what to check before you put in a cent.",
+    p4_h: "Economy and markets", p4_p: "Rates, inflation, the dollar and what central banks decide, translated to your wallet.",
+    p5_h: "Income and work", p5_p: "Negotiating pay, side income and what to do with a raise or a bonus.",
+    p6_h: "Big decisions", p6_p: "Rent or buy, the car, the mortgage, insurance: the purchases that shape a decade.",
+    p7_h: "History and cases", p7_p: "Bubbles, crashes, fortunes that vanished and what they teach today.",
+    p8_h: "Habits and traps", p8_p: "Why we spend the way we do, consumer traps and how to spot a scam in time.",
+    how_h2: "How we do it", how_sub: "Five rules everything we publish has to meet.",
+    d1_b: "Straight to the point.", d1_s: "No intros, no filler: the first second already says something.",
+    d2_b: "Numbers, not vague tips.", d2_s: "Every figure has a source, and the source goes in the description.",
+    d3_b: "No jargon.", d3_s: "Plain, friendly language, the kind you'd use with a friend.",
+    d4_b: "Honest promises.", d4_s: "No get-rich-quick, no guaranteed returns.",
+    d5_b: "In two languages.", d5_s: "Dinero Simple in Spanish and Simple Money in English, each written for its audience, not rushed through a translator.",
+    aud_h: "Who it's for", aud_p: "For anyone who feels they work more and have less, who never got a financial education, or who wants to start saving and investing without feeling overwhelmed.",
+    disc: "General informational and educational content; it does not constitute personalized financial advice.",
+    who: "Simple Money Media produces Dinero Simple (Spanish) and Simple Money (English).",
+    contact: "Contact:", th_dark: "Switch to dark mode", th_light: "Switch to light mode",
+    cards: [
+      { big: "You save backwards", sub: "and that's why nothing's left" },
+      { big: "1,000 → 0", sub: "every single month" },
+      { big: "0% interest", sub: "isn't free" },
+      { big: "You paid 600", sub: "and still owe 850" },
+      { big: "The Fed raised rates", sub: "what changes for you" },
+      { big: "Prices +5%, pay +3%", sub: "you lost 2%" },
+      { big: "72 ÷ 8 = 9 years", sub: "to double your money" },
+      { big: "1 bulb = 1 house", sub: "Holland, 1637" },
+      { big: "Rent or buy?", sub: "the full math" },
+      { big: "Pay yourself first.", sub: "Then everything else." }
+    ]
+  }
+};
+
+/* =========================================================
+   Lógica
+   ========================================================= */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+let lang = "es";
+
+function store(k, v){ try { localStorage.setItem(k, v); } catch (e) {} }
+function read(k){ try { return localStorage.getItem(k); } catch (e) { return null; } }
+
+function setLang(next){
+  lang = T[next] ? next : "es";
+  const t = T[lang], c = CONFIG[lang];
+  document.documentElement.lang = lang;
+  document.title = t.title;
+  $('meta[name="description"]').setAttribute("content", t.desc);
+  $$("[data-i18n]").forEach(el => { const k = el.dataset.i18n; if (t[k] != null) el.textContent = t[k]; });
+  $$(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+  $("[data-switch]").dataset.switch = lang === "es" ? "en" : "es";
+
+  ["youtube","facebook"].forEach(p => {
+    const item = c[p];
+    $$(`[data-link="${p}"]`).forEach(a => { a.href = item.url || "#"; });
+    $$(`[data-handle="${p}"]`).forEach(s => s.textContent = item.handle || "");
+  });
+  $$('[data-link="mail"]').forEach(a => { a.href = "mailto:" + CONFIG.email; a.textContent = CONFIG.email; });
+
+  renderCards(t.cards);
+  store("sm_lang", lang);
+  syncThemeLabel();
+}
+
+let cardIndex = 0;
+function renderCards(cards){
+  const wrap = $("#cards"), dots = $("#dots");
+  wrap.innerHTML = cards.map((c, i) => `<div class="card${i === 0 ? " is-on" : ""}"><div class="big${c.big.length > 15 ? " long" : ""}">${c.big}</div><div class="sub">${c.sub}</div><div class="bar"></div></div>`).join("");
+  dots.innerHTML = cards.map((_, i) => `<i${i === 0 ? ' class="is-on"' : ""}></i>`).join("");
+  cardIndex = 0;
+}
+function nextCard(){
+  const cards = $$("#cards .card"), dots = $$("#dots i");
+  if (cards.length < 2) return;
+  cards[cardIndex].classList.remove("is-on"); dots[cardIndex].classList.remove("is-on");
+  cardIndex = (cardIndex + 1) % cards.length;
+  cards[cardIndex].classList.add("is-on"); dots[cardIndex].classList.add("is-on");
+}
+
+function currentTheme(){ return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light"; }
+function syncThemeLabel(){
+  const t = T[lang]; const btn = $("#theme"); if (!btn) return;
+  btn.setAttribute("aria-label", currentTheme() === "dark" ? t.th_light : t.th_dark);
+  const meta = $('meta[name="theme-color"]'); if (meta) meta.setAttribute("content", currentTheme() === "dark" ? "#0B1526" : "#143A6B");
+}
+function setTheme(next){
+  document.documentElement.setAttribute("data-theme", next);
+  store("sm_theme", next);
+  syncThemeLabel();
+}
+
+(function init(){
+  const q = new URLSearchParams(location.search).get("lang");
+  const saved = read("sm_lang");
+  const nav = (navigator.language || "es").toLowerCase().startsWith("es") ? "es" : "en";
+  setLang(q || saved || nav);
+  $("#year").textContent = new Date().getFullYear();
+  $$(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+  $("[data-switch]").addEventListener("click", e => setLang(e.currentTarget.dataset.switch));
+  $("#theme").addEventListener("click", () => setTheme(currentTheme() === "dark" ? "light" : "dark"));
+  const mq = window.matchMedia("(prefers-color-scheme: dark)");
+  mq.addEventListener("change", e => { if (!read("sm_theme")) { document.documentElement.setAttribute("data-theme", e.matches ? "dark" : "light"); syncThemeLabel(); } });
+})();
+
+(function rotate(){
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  setInterval(nextCard, 3200);
+})();
+</script>
+</body>
+</html>

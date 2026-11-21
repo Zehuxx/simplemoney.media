@@ -188,6 +188,10 @@
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 22v-8.2h2.8l.4-3.3h-3.2V8.4c0-.9.3-1.6 1.6-1.6h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.3h2.8V22h3.4Z"/></svg>
             <span data-i18n="cta_fb">Seguir en Facebook</span>
           </a>
+          <a class="btn btn-ghost" data-link="instagram" data-platform="instagram" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>
+            <span data-i18n="cta_ig">Seguir en Instagram</span>
+          </a>
         </div>
         <p class="hero-note">
           <span data-i18n="note_a">Nuevos videos cada semana. También en inglés:</span>
@@ -207,7 +211,7 @@
   <section id="ver">
     <div class="wrap">
       <h2 data-i18n="watch_h2">Dónde ver Dinero Simple</h2>
-      <p class="sub" data-i18n="watch_sub">El mismo contenido en las dos plataformas.</p>
+      <p class="sub" data-i18n="watch_sub">El mismo contenido en todas nuestras plataformas.</p>
       <div class="rows">
         <div class="row" data-platform="youtube">
           <div class="name"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#FF0000" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12 31 31 0 0 0 23 7.2Z"/><path fill="#fff" d="M9.7 15.1V8.9l6 3.1-6 3.1Z"/></svg>YouTube</div>
@@ -218,6 +222,11 @@
           <div class="name"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#1877F2"/><path fill="#fff" d="M13.3 20v-6.6h2.2l.3-2.6h-2.5V9.2c0-.7.2-1.3 1.3-1.3h1.3V5.6c-.2 0-1-.1-2-.1-2 0-3.3 1.2-3.3 3.4v1.9H8.4v2.6h2.2V20h2.7Z"/></svg>Facebook</div>
           <div class="what"><span data-i18n="fb_what">La página en español.</span> <span class="handle" data-handle="facebook"></span></div>
           <a class="btn btn-ghost" data-link="facebook" href="#" target="_blank" rel="noopener" data-i18n="open">Abrir</a>
+        </div>
+        <div class="row" data-platform="instagram">
+          <div class="name"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="igg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FEDA75"/><stop offset=".35" stop-color="#FA7E1E"/><stop offset=".6" stop-color="#D62976"/><stop offset=".85" stop-color="#962FBF"/><stop offset="1" stop-color="#4F5BD5"/></linearGradient></defs><rect x="1" y="1" width="22" height="22" rx="6.5" fill="url(#igg)"/><rect x="5.5" y="5.5" width="13" height="13" rx="4" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.2" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16.3" cy="7.7" r="1" fill="#fff"/></svg>Instagram</div>
+          <div class="what"><span data-i18n="ig_what">La cuenta en español.</span> <span class="handle" data-handle="instagram"></span></div>
+          <a class="btn btn-ghost" data-link="instagram" href="#" target="_blank" rel="noopener" data-i18n="open">Abrir</a>
         </div>
       </div>
     </div>
@@ -284,11 +293,13 @@ const CONFIG = {
   email: "management@simplemoney.media",   // correo de contacto público
   es: {
     youtube:  { url: "https://www.youtube.com/@dinerosimplemedia",  handle: "@dinerosimplemedia" },
-    facebook: { url: "https://www.facebook.com/dinerosimplemedia",  handle: "@dinerosimplemedia" }
+    facebook: { url: "https://www.facebook.com/dinerosimplemedia",  handle: "@dinerosimplemedia" },
+    instagram:{ url: "https://www.instagram.com/dinerosimplemedia/",  handle: "@dinerosimplemedia" }
   },
   en: {
     youtube:  { url: "https://www.youtube.com/@simplemoneymediahq", handle: "@simplemoneymediahq" },
-    facebook: { url: "https://www.facebook.com/simplemoneymediahq", handle: "@simplemoneymediahq" }
+    facebook: { url: "https://www.facebook.com/simplemoneymediahq", handle: "@simplemoneymediahq" },
+    instagram:{ url: "", handle: "" }   // aún no existe: la fila se oculta en inglés
   }
 };
 
@@ -302,10 +313,10 @@ const T = {
     brand: "Dinero Simple", nav_watch: "Dónde ver", nav_topics: "Temas", nav_how: "Cómo lo hacemos",
     h1: "El dinero, explicado simple.",
     lede: "El dinero explicado con números reales y ejemplos de la vida diaria, para tomar mejores decisiones con lo que ganas. Sin jerga y sin promesas.",
-    cta_yt: "Suscríbete en YouTube", cta_fb: "Seguir en Facebook",
+    cta_yt: "Suscríbete en YouTube", cta_fb: "Seguir en Facebook", cta_ig: "Seguir en Instagram",
     note_a: "Nuevos videos cada semana. También en inglés:", note_b: "Simple Money",
-    watch_h2: "Dónde ver Dinero Simple", watch_sub: "El mismo contenido en las dos plataformas.",
-    yt_what: "El canal en español.", fb_what: "La página en español.", open: "Abrir",
+    watch_h2: "Dónde ver Dinero Simple", watch_sub: "El mismo contenido en todas nuestras plataformas.",
+    yt_what: "El canal en español.", fb_what: "La página en español.", ig_what: "La cuenta en español.", open: "Abrir",
     pil_h2: "De qué hablamos", pil_sub: "De todo lo que tenga que ver con el dinero y se pueda explicar con números y ejemplos reales. Estos son algunos de los temas:",
     pil_more: "Y lo que pidan en los comentarios: si se puede explicar con números, cabe aquí.",
     p1_h: "Ahorro y presupuesto", p1_p: "Cómo organizar el sueldo, apartar dinero y que alcance hasta fin de mes.",
@@ -346,10 +357,10 @@ const T = {
     brand: "Simple Money", nav_watch: "Where to watch", nav_topics: "Topics", nav_how: "How we do it",
     h1: "Money, made simple.",
     lede: "Money explained with real numbers and everyday examples, so you can make better decisions with what you earn. No jargon, no hype.",
-    cta_yt: "Subscribe on YouTube", cta_fb: "Follow on Facebook",
+    cta_yt: "Subscribe on YouTube", cta_fb: "Follow on Facebook", cta_ig: "Follow on Instagram",
     note_a: "New videos every week. Also in Spanish:", note_b: "Dinero Simple",
     watch_h2: "Where to watch Simple Money", watch_sub: "The same content on both platforms.",
-    yt_what: "The channel in English.", fb_what: "The page in English.", open: "Open",
+    yt_what: "The channel in English.", fb_what: "The page in English.", ig_what: "The account in English.", open: "Open",
     pil_h2: "What we talk about", pil_sub: "Anything to do with money that can be explained with numbers and real examples. These are some of the topics:",
     pil_more: "And whatever people ask for in the comments: if it can be explained with numbers, it fits here.",
     p1_h: "Saving and budgeting", p1_p: "How to organize your paycheck, set money aside and make it last the month.",
@@ -407,8 +418,9 @@ function setLang(next){
   $$(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
   $("[data-switch]").dataset.switch = lang === "es" ? "en" : "es";
 
-  ["youtube","facebook"].forEach(p => {
-    const item = c[p];
+  ["youtube","facebook","instagram"].forEach(p => {
+    const item = c[p] || {};
+    $$(`[data-platform="${p}"]`).forEach(r => { r.style.display = item.url ? "" : "none"; });
     $$(`[data-link="${p}"]`).forEach(a => { a.href = item.url || "#"; });
     $$(`[data-handle="${p}"]`).forEach(s => s.textContent = item.handle || "");
   });
